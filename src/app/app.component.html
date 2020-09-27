@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="navigator">
+    <a href="/" class="navigator-btn">Home</a>
+    <a href="../docs/" class="navigator-btn" target="_blank">Docs</a>
+    <a href="https://debabratapatra.github.io/about.html" class="navigator-btn">About Me</a>
+  </div>
+</div>
+<div class="title-header">Angular Pivot Table
+  <span class="donate" title="Buy me a beer / coffee">
+    <a href="https://debabratapatra.github.io/donate.html">
+      <i class="fa fa-cc-paypal"></i>Donate
+    </a>
+  </span>
+</div>
+<div class="body">
+  <table width='100%'>
+    <tr>
+      <td class="left-panel">
+        <ul>
+          <li>
+            <a routerLink="basic_tree_grid" routerLinkActive="selected">Basic Pivot Table</a>
+          </li>
+        </ul>
+      </td>
+      <td class="content">
+        <router-outlet></router-outlet>
+      </td>
+    </tr>
+  </table>
+</div>
