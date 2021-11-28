@@ -1,0 +1,30 @@
+<h2>Basic Pivot Table</h2>
+<p></p>
+<db-angular-pivot-table #angularGrid [source]="source" [configs]="configs"></db-angular-pivot-table>
+<p>It is a very basic pivot table. You provide an array of objects and set rows and columns in configs.</p>
+<h3>HTML</h3>
+<pre class="prettyprint lang-ts short-code">
+    {{"
+    &lt;db-angular-pivot-table #angularGrid [source]='source' [configs]='configs'&gt;&lt;/db-angular-pivot-table&gt;
+    "}}
+</pre>
+
+<p>rows and columns fields are mandatory.</p>
+<div style="margin: 20px 0;">Please check the sample code below.</div>
+<pre class="prettyprint linenums lang-ts">
+{{"
+export class BasicPivotTableComponent {
+  
+    source: any = [
+      {'author': 'Deba', 'book': 'Angular'},
+      {'author': 'Deba', 'book': 'Physics'},
+      {'author': 'Aditya', 'book': 'Angular'}
+    ];
+  
+    configs: any = {
+      'rows': 'author',
+      'columns': 'book'
+    };
+}
+"}}
+</pre>
