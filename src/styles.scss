@@ -11,6 +11,10 @@ p {
     line-height: 1.6;
 }
 
+pre.prettyprint {
+    border-color: #d1cece !important;
+}
+
 span.code {
     padding: 2px 6px;
     color: #1f1f1f;
@@ -21,7 +25,7 @@ span.code {
 
 .short-code {
     display: inline-block;
-    background-color: #eee;
+    background-color: #f9f9f9;
 }
 
 li.L0, li.L1, li.L2, li.L3, li.L4,
