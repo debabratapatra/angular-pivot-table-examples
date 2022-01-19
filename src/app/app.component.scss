@@ -3,10 +3,11 @@ div.body {
   margin-top: 20px;
 }
 
-td.left-panel {
+div.left-panel {
   width: 25%;
   vertical-align: top;
   padding-right: 10px;
+  display: inline-block;
   ul {
     list-style: none;
     padding-left: 10px;
@@ -30,8 +31,9 @@ td.left-panel {
   }
 }
 
-td.content {
+div.content {
   width: 60%;
+  display: inline-block;
 }
 
 span.donate {
@@ -52,5 +54,11 @@ span.donate {
   }
   div.content {
     padding: 1rem 1rem;
+  }
+  div.left-panel {
+    width: 100%;
+  }
+  div.content {
+    width: 100%;
   }
 }

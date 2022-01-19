@@ -1,17 +1,13 @@
 
 <div class="body">
-  <table width='100%'>
-    <tr>
-      <td class="left-panel">
-        <ul>
-          <li>
-            <a routerLink="basic_tree_grid" routerLinkActive="selected">Basic Pivot Table</a>
-          </li>
-        </ul>
-      </td>
-      <td class="content">
-        <router-outlet></router-outlet>
-      </td>
-    </tr>
-  </table>
+  <div class="left-panel">
+    <ul>
+      <li>
+        <a routerLink="basic_tree_grid" routerLinkActive="selected">Basic Pivot Table</a>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
