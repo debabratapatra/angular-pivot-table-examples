@@ -1,13 +1,37 @@
 
 <div class="body">
   <div class="left-panel">
-    <ul>
-      <li>
-        <a routerLink="basic_tree_grid" routerLinkActive="selected">Basic Pivot Table</a>
-      </li>
-    </ul>
+    <div class="sidebar">
+      <ul>
+        <li>
+          <a routerLink="basic_tree_grid" routerLinkActive="selected">Basic Pivot Table</a>
+        </li>
+      </ul>
+      <div class="left-ads-vertical"></div>
+    </div>
   </div>
   <div class="content">
-    <router-outlet></router-outlet>
+    <table>
+      <tr>
+        <td class="example-content">
+          <router-outlet></router-outlet>
+          <div class="ads-horizontal">
+            <!-- tree-grid-horizontal -->
+            <ins
+              class="adsbygoogle"
+              style="display: block"
+              data-ad-client="ca-pub-3506323855246144"
+              data-ad-slot="2512126468"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+        </td>
+        <td class="ads">
+          <div class="ads-vertical"></div>
+        </td>
+      </tr>
+    </table>
+    
   </div>
 </div>

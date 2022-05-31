@@ -52,6 +52,16 @@ span.donate {
   }
 }
 
+td.example-content {
+  width: 65%;
+  vertical-align: top;
+}
+
+td.ads {
+  width: 35%;
+  vertical-align: top;
+}
+
 @media only screen and (max-width: 800px) {
   div.navigator {
     right: 0;
