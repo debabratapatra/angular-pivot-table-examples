@@ -1,0 +1,86 @@
+div.header {
+  height: 68px;
+  background-color: #202020;
+  position: relative;
+
+  span.logo {
+    color: white;
+    font-size: 2.4vw;
+    padding-left: 1vw;
+    margin-top: 8px;
+    display: inline-block;
+  }
+}
+
+div.navigator {
+  position: absolute;
+  top: 1.9rem;
+  right: 0;
+}
+
+div.navigator a.navigator-btn {
+  padding: 7px 1rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+}
+
+div.navigator .navigator-btn.selected {
+  border-bottom: 5px solid #edb317;
+}
+
+div.navigator a.navigator-btn:hover {
+  color: gray;
+}
+
+.custom_class {
+  background-color: green;
+}
+
+div.title-header {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+div.title-header h1 {
+  font-weight: 600;
+  font-size: 40px;
+  display: inline-block;
+}
+
+
+span.donate {
+  font-size: 20px;
+  position: absolute;
+  right: 110px;
+}
+
+span.donate a {
+  text-decoration: none;
+}
+
+span.buypro {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+}
+
+span.buypro a {
+  color: #ff9e0c;
+  text-decoration: none;
+}
+
+span.buypro:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #202020;
+  position: relative;
+  color: white;
+  padding: 20px 0 0 10px;
+  height: 68px;
+  box-sizing: border-box;
+}

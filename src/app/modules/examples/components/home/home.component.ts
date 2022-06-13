@@ -6,6 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  source: any = [
+    {'author': 'Deba', 'book': 'Angular'},
+    {'author': 'Deba', 'book': 'Physics'},
+    {'author': 'Aditya', 'book': 'Angular'}
+  ];
+
+  configs: any = {
+    'rows': 'author',
+    'columns': 'book'
+  };
 
   constructor() { }
 

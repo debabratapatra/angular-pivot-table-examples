@@ -1,0 +1,32 @@
+div.container {
+  height: calc(100vh - 136px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;    
+  overflow: auto;
+
+  h1.title {
+      margin: 0;
+      padding: 16px 0;
+  }
+
+  div.tool-container {
+      text-align: left;
+  }
+}
+
+div.active {
+  background-color: #acf6ac;
+  color: #028f02;
+  padding: 4px 16px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+div.inactive {
+  background-color: #f5a2a2;
+  color: red;
+  padding: 4px 16px;
+  display: inline-block;
+  border-radius: 4px;
+}
