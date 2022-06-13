@@ -53,21 +53,28 @@ export class AngularPivotTableService {
   exportToExcel(configs, processed_headers, processed_data, name) {
     const table = document.createElement('table');
 
-    const tr = table.insertRow();
+    let tr = table.insertRow();
     let td = tr.insertCell();
     (<HTMLElement>td).style.fontWeight = 'bold';
-    td.appendChild(document.createTextNode(configs.columns + '-' + configs.rows));
-
+    td.appendChild(document.createTextNode(configs.columns));
+    
     for (let index = 0; index < processed_headers.length; index++) {
       const header = processed_headers[index];
       const td = tr.insertCell();
       (<HTMLElement>td).style.fontWeight = 'bold';
+      td.rowSpan = 2;
       td.appendChild(document.createTextNode(header));
     }
 
     td = tr.insertCell();
     (<HTMLElement>td).style.fontWeight = 'bold';
+    td.rowSpan = 2;
     td.appendChild(document.createTextNode('Total'));
+
+    tr = table.insertRow();
+    td = tr.insertCell();
+    (<HTMLElement>td).style.fontWeight = 'bold';
+    td.appendChild(document.createTextNode(configs.rows));
 
     //Process data.
     for (let index = 0; index < processed_data.length; index++) {
@@ -90,6 +97,10 @@ export class AngularPivotTableService {
         , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) };
 
     var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
-    window.location.href = uri + base64(format(template, ctx));
+
+    var a = document.createElement('a');
+    a.href = uri + base64(format(template, ctx));
+    a.download = name + '.xls';
+    a.click();
   }
 }
