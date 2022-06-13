@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AngularPivotTableService } from './angular-pivot-table.service';
 import { Configs } from './models/Configs.model';
 import { Store } from './store/store';
 
@@ -31,7 +32,7 @@ export class AngularPivotTableComponent implements OnInit {
   processed_data: any[] = [];
   processed_headers: any[] = [];
 
-  constructor() { }
+  constructor(private angularPivotTableService: AngularPivotTableService) { }
 
   ngOnInit(): void {
     this.validateConfigs();
@@ -65,6 +66,15 @@ export class AngularPivotTableComponent implements OnInit {
 
     // Deep clone.
     this.configs.css = Object.assign({}, this.default_configs.css, this.configs.css);
+  }
+
+  export(type, name) {
+    if(type == 'csv') {
+      this.angularPivotTableService.exportToCSV(this.configs, this.processed_headers, this.processed_data, name);
+    }
+    else if(type == 'excel') {
+      this.angularPivotTableService.exportToExcel(this.configs, this.processed_headers, this.processed_data, name);
+    }
   }
 
 }

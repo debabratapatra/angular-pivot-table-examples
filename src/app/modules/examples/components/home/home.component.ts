@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularPivotTableComponent } from 'src/app/modules/angular-pivot-table/angular-pivot-table.component';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   source: any = [
-    {'author': 'Deba', 'book': 'Angular'},
-    {'author': 'Deba', 'book': 'Physics'},
-    {'author': 'Aditya', 'book': 'Angular'}
+    {'author': 'Deb', 'book': 'Angular'},
+    {'author': 'Deb', 'book': 'React'},
+    {'author': 'Aditya', 'book': 'Angular'},
+    {'author': 'Aditya', 'book': 'Vue'},
+    {'author': 'Prakash', 'book': 'Vue'},
   ];
 
   configs: any = {
@@ -17,9 +20,15 @@ export class HomeComponent implements OnInit {
     'columns': 'book'
   };
 
+  @ViewChild('pivotTable') pivotTable: AngularPivotTableComponent;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  export(type) {
+    this.pivotTable.export(type, 'pivotTable');
   }
 
 }
