@@ -1,10 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BasicPivotTableComponent } from './components/BasicPivotTableComponent';
+import { BuyproComponent } from './modules/examples/components/buypro/buypro.component';
+import { HomeComponent } from './modules/examples/components/home/home.component';
+import { PricingComponent } from './modules/examples/components/pricing/pricing.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'basic_tree_grid', pathMatch: 'full' },
-  { path: 'basic_tree_grid', component: BasicPivotTableComponent }
+  {
+    path: '', redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: 'home', component: HomeComponent
+  },
+  {
+    path: 'pricing', component: PricingComponent
+  },
+  {
+    path: 'pricing/buy-angular-tree-grid-pro', component: BuyproComponent
+  },
+  {
+    path: 'examples',
+    loadChildren: () => import('./modules/examples/examples.module').then(m => m.ExamplesModule)
+  }
 ];
 
 @NgModule({
