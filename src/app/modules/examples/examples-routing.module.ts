@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BasicPivotTableComponent } from 'src/app/modules/examples/components/BasicPivotTableComponent';
+import { BasicPivotTableComponent } from './components/basic-pivot-table/basic-pivot-table.component';
 import { ExamplesComponent } from './examples.component';
 
 const routes: Routes = [

@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularPivotTableComponent } from 'src/app/modules/angular-pivot-table/angular-pivot-table.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-basic-pivot-table',
+  templateUrl: './basic-pivot-table.component.html',
+  styleUrls: ['./basic-pivot-table.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class BasicPivotTableComponent implements OnInit {
   source: any = [
     {'author': 'Deb', 'book': 'Angular'},
     {'author': 'Deb', 'book': 'React'},
@@ -26,15 +25,9 @@ export class HomeComponent implements OnInit {
     'columns': 'book'
   };
 
-  @ViewChild('pivotTable') pivotTable: AngularPivotTableComponent;
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  export(type) {
-    this.pivotTable.export(type, 'pivotTable');
   }
 
 }
