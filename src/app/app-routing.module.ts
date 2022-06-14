@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'pricing', component: PricingComponent
   },
   {
-    path: 'pricing/buy-angular-tree-grid-pro', component: BuyproComponent
+    path: 'pricing/buy-angular-pivot-table-pro', component: BuyproComponent
   },
   {
     path: 'examples',

@@ -1,0 +1,30 @@
+div.container {
+  height: calc(100vh - 136px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;    
+  overflow: auto;
+
+  h1.title {
+      margin: 0;
+      padding: 16px 0;
+  }
+
+  div.tool-container {
+      text-align: left;
+  }
+}
+
+a.download {
+  text-decoration: none;
+  color: white;
+  padding: 6px 10px;
+  border: 1px solid rgb(215, 214, 221);
+  background-color: #4242f3;
+  margin-left: 4px;
+  border-radius: 5px;
+  
+  &:hover {
+      text-decoration: underline;
+  }
+}

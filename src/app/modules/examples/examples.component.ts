@@ -43,7 +43,7 @@ export class ExamplesComponent implements AfterViewInit {
       data-full-width-responsive="true"
     ></ins>`;
       const $div = document.createElement('div');
-      $div.style.margin = '5px';
+      $div.style.margin = '5px 5px 150px';
       $div.innerHTML = ads;
       document.querySelector(selector).append($div);
       (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});

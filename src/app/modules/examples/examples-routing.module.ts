@@ -8,8 +8,8 @@ const routes: Routes = [
     path: '',
     component: ExamplesComponent,
     children: [
-      { path: '', redirectTo: 'basic_tree_grid', pathMatch: 'full' },
-      { path: 'basic_tree_grid', component: BasicPivotTableComponent }
+      { path: '', redirectTo: 'basic_pivot_table', pathMatch: 'full' },
+      { path: 'basic_pivot_table', component: BasicPivotTableComponent }
     ],
   },
 ];
