@@ -1,0 +1,9 @@
+<div class="dropdown">
+  <button class="dropbtn">Export</button>
+  <div class="dropdown-content">
+    <a (click)="export('excel')">Export to Excel</a>
+    <a (click)="export('csv')">Export to CSV</a>
+  </div>
+</div>
+<p></p>
+<db-angular-pivot-table #pivotTable [source]="source" [configs]="configs"></db-angular-pivot-table>
