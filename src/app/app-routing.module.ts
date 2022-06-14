@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BuyproComponent } from './modules/examples/components/buypro/buypro.component';
-import { HomeComponent } from './modules/examples/components/home/home.component';
-import { PricingComponent } from './modules/examples/components/pricing/pricing.component';
+import { BuyproComponent } from './components/buypro/buypro.component';
+import { HomeComponent } from './components/home/home.component';
+import { PricingComponent } from './components/pricing/pricing.component';
 
 const routes: Routes = [
   {
