@@ -8,4 +8,6 @@ export interface Configs {
     row_select_function: Function;
     rows: string;
     columns: string;
+    value?: string;
+    value_formatter?: Function;
 }

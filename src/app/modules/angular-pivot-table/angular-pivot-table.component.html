@@ -22,8 +22,18 @@
 
     <tbody>
         <tr *ngFor="let row of processed_data">
-            <td *ngFor="let col of row">
-                {{col}}
+            <td *ngFor="let col of row; index as i">
+                <div *ngIf="i == 0" class="value-container" [innerHTML]="col | safeHtml"></div>
+                <ng-container *ngIf="i > 0">
+                    <ng-container *ngIf="configs.value_formatter">
+                        <div [innerHTML]="configs.value_formatter(col) | safeHtml"></div>
+                    </ng-container>
+                    <ng-container *ngIf="!configs.value_formatter">
+                        <div class="value-container" [innerHTML]="col | safeHtml"></div>
+                    </ng-container>
+                    
+                </ng-container>
+                
             </td>
         </tr>
     </tbody>

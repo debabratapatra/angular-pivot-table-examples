@@ -56,9 +56,12 @@
         td {
             border: 1px solid #cdd5dc;
             vertical-align: middle;
-            position: relative;
-            padding: 0.5rem 0.5rem;
-            box-sizing: border-box;
+
+            div.value-container {
+                position: relative;
+                padding: 0.5rem 0.5rem;
+                box-sizing: border-box;
+            }
         }
     }
 }

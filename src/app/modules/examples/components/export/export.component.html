@@ -1,3 +1,4 @@
+<h2 style="text-align: center;">Export<span class="pro">(Pro)</span></h2>
 <div class="dropdown">
   <button class="dropbtn">Export</button>
   <div class="dropdown-content">
@@ -7,3 +8,13 @@
 </div>
 <p></p>
 <db-angular-pivot-table #pivotTable [source]="source" [configs]="configs"></db-angular-pivot-table>
+<p>This is an example to export records to <b>CSV</b> or <b>Excel</b>.</p>
+<h3>Grid Access</h3>
+<pre class="code">
+    <span class="tr first-row"><span class="th"></span><code>{{"@ViewChild('pivotTable') pivotTable: AngularPivotTableComponent;"}}</code></span>
+</pre>
+<h3>Function</h3>
+<p>Just call the inbuild export function by passing type(csv or excel) and name of the file to be downloaded.</p>
+<pre class="code">
+    <span class="tr first-row"><span class="th"></span><code>{{"this.pivotTable.export(type, 'pivotTable')"}}</code></span>
+</pre>

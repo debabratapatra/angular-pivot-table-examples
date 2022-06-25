@@ -5,12 +5,14 @@ import { ExamplesRoutingModule } from './examples-routing.module';
 import { AngularPivotTableModule } from '../angular-pivot-table/angular-pivot-table.module';
 import { BasicPivotTableComponent } from './components/basic-pivot-table/basic-pivot-table.component';
 import { ExportComponent } from './components/export/export.component';
+import { ValueFormatterComponent } from './components/value-formatter/value-formatter.component';
 
 @NgModule({
   declarations: [
     ExamplesComponent,
     BasicPivotTableComponent,
-    ExportComponent
+    ExportComponent,
+    ValueFormatterComponent
   ],
   imports: [CommonModule, ExamplesRoutingModule, AngularPivotTableModule],
 })

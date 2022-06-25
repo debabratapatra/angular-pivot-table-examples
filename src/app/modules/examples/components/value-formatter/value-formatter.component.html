@@ -1,0 +1,19 @@
+<h2 style="text-align: center;">Value Formatter<span class="pro">(Pro)</span></h2>
+<p></p>
+<db-angular-pivot-table #angularGrid [source]="source" [configs]="configs"></db-angular-pivot-table>
+<p>In the above example a value is explicitly given and that value can be formatted by a user defined function.</p>
+<h3>Configs</h3>
+<div class="code">
+  <pre class="prettyprint linenums lang-ts">
+{{"
+configs: any = {
+  rows: 'user',
+  columns: 'book',
+  value: 'price',
+  value_formatter: function(value) {
+    return '$' + value;
+  }
+};
+"}}
+</pre>
+</div>

@@ -43,17 +43,30 @@ export class Store {
             let row_count = 0;
             for (let j = 0; j < columns.length; j++) {
                 const column = columns[j];
-                let count = 0;
-                
-                for (let k = 0; k < source.length; k++) {
-                    const data = source[k];
-                    
-                    if(data[configs.rows] == row && data[configs.columns] == column) {
-                        count++;
+                if(configs.value) {
+                    const raw_row = source.filter(r_row => r_row[configs.rows] == row && r_row[configs.columns] == column);
+                    if(raw_row[0]) {
+                        const value = raw_row[0][configs.value];
+                        processed_row.push(value);
+                        row_count += value;
+                    } else {
+                        processed_row.push(0);
                     }
+                } else {
+                    let count = 0;
+                
+                    for (let k = 0; k < source.length; k++) {
+                        const data = source[k];
+                        
+                        if(data[configs.rows] == row && data[configs.columns] == column) {
+                            count++;
+                        }
+                    }
+                    processed_row.push(count);
+                    row_count += count;
                 }
-                processed_row.push(count);
-                row_count += count;
+                
+                
             }
             processed_row.push(row_count);
             this.processed_data.push(processed_row);
