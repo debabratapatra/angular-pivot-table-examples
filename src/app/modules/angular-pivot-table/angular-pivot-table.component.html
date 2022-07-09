@@ -1,40 +1,40 @@
-<table [attr.class]="'db-table-view' + configs.css.table_class">
-    <thead>
-        <tr>
-            <th class="header-corner">
-                <table class="header-corner">
-                    <tr>
-                        <th class="corner-top">{{configs.columns}}</th>
-                    </tr>
-                    <tr>
-                        <th class="corner-bottom">{{configs.rows}}</th>
-                    </tr>
-                </table>
-            </th>
-            <th *ngFor="let header of processed_headers">
-                {{header}}
-            </th>
-            <th>
-                Total
-            </th>
-        </tr>
-    </thead>
+<div [ngStyle]="{width: configs.width ? configs.width : 'auto', height: configs.height ? configs.height : 'auto'}" class="db-tree-view-container">
 
-    <tbody>
-        <tr *ngFor="let row of processed_data">
-            <td *ngFor="let col of row; index as i">
-                <div *ngIf="i == 0" class="value-container" [innerHTML]="col | safeHtml"></div>
-                <ng-container *ngIf="i > 0">
-                    <ng-container *ngIf="configs.value_formatter">
-                        <div [innerHTML]="configs.value_formatter(col) | safeHtml"></div>
-                    </ng-container>
-                    <ng-container *ngIf="!configs.value_formatter">
-                        <div class="value-container" [innerHTML]="col | safeHtml"></div>
+    <table [attr.class]="'db-table-view' + configs.css.table_class">
+        <thead>
+            <tr *ngFor="let headers of processed_headers; index as i">
+                <th class="header-corner" [attr.rowspan]="processed_headers.length" *ngIf="i == 0">
+                    <table class="header-corner" *ngIf="processed_headers.length == 1">
+                        <tr>
+                            <th class="corner-top">{{configs.columns}}</th>
+                        </tr>
+                        <tr>
+                            <th class="corner-bottom">{{configs.rows}}</th>
+                        </tr>
+                    </table>
+                </th>
+                <th *ngFor="let header of headers" [attr.colspan]="header.colspan" [attr.rowspan]="header.rowspan">
+                    {{header.tvalue}}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let row of processed_data">
+                <td *ngFor="let col of row; index as i">
+                    <div *ngIf="i == 0" class="value-container" [innerHTML]="col | safeHtml"></div>
+                    <ng-container *ngIf="i > 0">
+                        <ng-container *ngIf="configs.value_formatter">
+                            <div [innerHTML]="configs.value_formatter(col) | safeHtml"></div>
+                        </ng-container>
+                        <ng-container *ngIf="!configs.value_formatter">
+                            <div class="value-container" [innerHTML]="col | safeHtml"></div>
+                        </ng-container>
+                        
                     </ng-container>
                     
-                </ng-container>
-                
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

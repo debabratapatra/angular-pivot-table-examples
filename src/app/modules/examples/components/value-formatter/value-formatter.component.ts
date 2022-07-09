@@ -23,7 +23,7 @@ export class ValueFormatterComponent implements OnInit {
   configs: any = {
     rows: 'user',
     columns: 'book',
-    value: 'price',
+    values: 'price',
     value_formatter: function(value) {
       if(value == 0) {
         return '<div style="background: #f5a2a2;padding: 0.5rem;color:red">0</div>';
