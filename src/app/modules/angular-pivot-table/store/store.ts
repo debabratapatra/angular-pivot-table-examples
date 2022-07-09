@@ -123,22 +123,37 @@ export class Store {
             row3.push({value, tvalue: value, colspan: 1});
         }
         this.processed_headers.push(row3);
+
+        //Insert zeros to the bottom grand total.
+        const total_grid_row: any = ['Grand Total'];
+        const total_columns = columns0.length * columns1.length * configs.values.length;
+
+        for (let index = 0; index < total_columns; index++) {
+            total_grid_row.push(0);
+        }
         
         for (let index = 0; index < rows0.length; index++) {
             const row0 = rows0[index];
 
             let grid_row = this.processMultiLevelColumns(source, configs, row0, null, columns0, columns1, [row0])
 
+            for (let index = 1; index < grid_row.length; index++) {
+                total_grid_row[index] += grid_row[index];
+            }
+
             this.processed_data.push(grid_row);
+
+            // For children
             for (let index = 0; index < rows1.length; index++) {
                 const row1 = rows1[index];
                 
                 grid_row = this.processMultiLevelColumns(source, configs, row0, row1, columns0, columns1, [row1]);
                 this.processed_data.push(grid_row);
             }
-
             
         }
+
+        this.processed_data.push(total_grid_row);
 
     }
 
