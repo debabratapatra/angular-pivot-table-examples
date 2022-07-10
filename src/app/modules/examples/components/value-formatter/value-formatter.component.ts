@@ -24,11 +24,11 @@ export class ValueFormatterComponent implements OnInit {
     rows: 'user',
     columns: 'book',
     values: 'price',
-    value_formatter: function(value) {
-      if(value == 0) {
+    value_formatter: function(col) {
+      if(col.value == 0) {
         return '<div style="background: #f5a2a2;padding: 0.5rem;color:red">0</div>';
       } else {
-        return '<div style="background-color: #acf6ac;padding: 0.5rem;color:#028f02">$'+ value + '</div>';
+        return '<div style="background-color: #acf6ac;padding: 0.5rem;color:#028f02">$'+ col.value + '</div>';
       }
     }
   };

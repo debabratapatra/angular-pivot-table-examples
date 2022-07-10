@@ -165,12 +165,24 @@ export class HomeComponent implements OnInit {
     { 'Sold': 45, 'Amount': 71797.5, 'Country': 'United Kingdom', 'Products': 'Touring Bikes', 'Year': 'FY 2018', 'Quarter': 'Q1' },
     { 'Sold': 80, 'Amount': 127640, 'Country': 'United States', 'Products': 'Touring Bikes', 'Year': 'FY 2018', 'Quarter': 'Q1' }];
 
+  soldFun = (val) => {
+    if(val > 100) {
+      return '<div style="background-color: #acf6ac;padding: 0.5rem;color:#028f02">'+ val + '</div>';
+    } else if (val < 20) {
+      return '<div style="background: #f5a2a2;padding: 0.5rem;color:red">'+ val +'</div>';
+    }else {
+      return val;
+    }
+  };
+  amountFun = (val) => {
+    return '$' + val;
+  };
   configs: any = {
     width: '1000px',
     height: '600px',
     rows: [{ name: 'Country' }, { name: 'Products' }],
     columns: [{ name: 'Year' }, { name: 'Quarter' }],
-    values: [{ name: 'Sold', caption: 'Units Sold' }, { name: 'Amount', caption: 'Sold Amount' }],
+    values: [{ name: 'Sold', caption: 'Units Sold', formatter: this.soldFun }, { name: 'Amount', caption: 'Sold Amount', formatter: this.amountFun }],
   };
 
   @ViewChild('pivotTable') pivotTable: AngularPivotTableComponent;

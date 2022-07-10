@@ -28,7 +28,7 @@
                             <div [innerHTML]="configs.value_formatter(col) | safeHtml"></div>
                         </ng-container>
                         <ng-container *ngIf="!configs.value_formatter">
-                            <div class="value-container" [innerHTML]="col | safeHtml"></div>
+                            <div class="value-container" [innerHTML]="col.tvalue | safeHtml"></div>
                         </ng-container>
                         
                     </ng-container>

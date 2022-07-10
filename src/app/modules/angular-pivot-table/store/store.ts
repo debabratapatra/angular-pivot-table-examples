@@ -55,10 +55,10 @@ export class Store {
                     const raw_row = source.filter(r_row => r_row[configs.rows] == row && r_row[configs.columns] == column);
                     if(raw_row[0]) {
                         const value = raw_row[0][configs.values];
-                        processed_row.push(value);
+                        processed_row.push({value, tvalue: value});
                         row_count += value;
                     } else {
-                        processed_row.push(0);
+                        processed_row.push({value: 0, tvalue: 0});
                     }
                 } else {
                     let count = 0;
@@ -70,13 +70,13 @@ export class Store {
                             count++;
                         }
                     }
-                    processed_row.push(count);
+                    processed_row.push({value: count, tvalue: count});
                     row_count += count;
                 }
                 
                 
             }
-            processed_row.push(row_count);
+            processed_row.push({value: row_count, tvalue: row_count});
             this.processed_data.push(processed_row);
         }
 
@@ -126,19 +126,29 @@ export class Store {
 
         //Insert zeros to the bottom grand total.
         const total_grid_row: any = ['Grand Total'];
-        const total_columns = columns0.length * columns1.length * configs.values.length;
+        const total_columns = columns0.length * columns1.length * configs.values.length + configs.values.length;
 
         for (let index = 0; index < total_columns; index++) {
-            total_grid_row.push(0);
+            total_grid_row.push({value: 0, tvalue: 0});
+        }
+
+        const formatters = {};
+
+        for (let index = 0; index < configs.values.length; index++) {
+            formatters[configs.values[index].name] = configs.values[index].formatter;
         }
         
         for (let index = 0; index < rows0.length; index++) {
             const row0 = rows0[index];
 
             let grid_row = this.processMultiLevelColumns(source, configs, row0, null, columns0, columns1, [row0])
-
-            for (let index = 1; index < grid_row.length; index++) {
-                total_grid_row[index] += grid_row[index];
+            // grid_row.children = false;
+            for (let index = 1; index <= total_columns; index++) {
+                const col = grid_row[index];
+                const formatter = formatters[col.name];
+                total_grid_row[index].value += col.value;
+                const total_value = total_grid_row[index].value;
+                total_grid_row[index].tvalue = formatter ? formatter(total_value) : total_value;
             }
 
             this.processed_data.push(grid_row);
@@ -148,6 +158,7 @@ export class Store {
                 const row1 = rows1[index];
                 
                 grid_row = this.processMultiLevelColumns(source, configs, row0, row1, columns0, columns1, [row1]);
+                // grid_row.children = true;
                 this.processed_data.push(grid_row);
             }
             
@@ -171,7 +182,8 @@ export class Store {
                 const column1 = columns1[index];
 
                 for (let index = 0; index < configs.values.length; index++) {
-                    const value_label = configs.values[index].name;
+                    const displayValue = configs.values[index];
+                    const value_label = displayValue.name;
                     let raw_rows = [];
                     
                     if(row1 == null) {
@@ -191,7 +203,8 @@ export class Store {
                     }
                     const value = raw_rows.map(row=>row[value_label]).reduce((a, b) => a + b, 0);
                     total_values[value_label] += value;
-                    grid_row.push(value);
+                    let tvalue = displayValue.formatter ? displayValue.formatter(value) : value;
+                    grid_row.push({value, tvalue, name: value_label});
                 }
                 
             }
@@ -199,15 +212,19 @@ export class Store {
         }
 
         for (let index = 0; index < configs.values.length; index++) {
-            const value_label = configs.values[index].name;
-            grid_row.push(total_values[value_label]);
+            const displayValue = configs.values[index];
+            const value_label = displayValue.name;
+            const value = total_values[value_label];
+            let tvalue = displayValue.formatter ? displayValue.formatter(value) : value;
+            grid_row.push({value, tvalue, name: value_label});
         }
 
         return grid_row;
     }
 
     addSummaryColumn(summary_row, index) {
-        summary_row.push(this.processed_data.map(data => data[index]).reduce((a, b) => a + b, 0));
+        const value = this.processed_data.map(data => data[index].value).reduce((a, b) => a + b, 0);
+        summary_row.push({value, tvalue: value});
     }
 
     findUnique(a) {
