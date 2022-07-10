@@ -167,7 +167,7 @@ export class HomeComponent implements OnInit {
 
   configs: any = {
     width: '1000px',
-    height: '300px',
+    height: '600px',
     rows: [{ name: 'Country' }, { name: 'Products' }],
     columns: [{ name: 'Year' }, { name: 'Quarter' }],
     values: [{ name: 'Sold', caption: 'Units Sold' }, { name: 'Amount', caption: 'Sold Amount' }],
